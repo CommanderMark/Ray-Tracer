@@ -4,11 +4,10 @@
 #include "../Math/Vector.h"
 
 class Ray {
-private:
+public:
     Vector3f origin;
     Vector3f direction;
 
-public:
     Ray(Vector3f& origin, Vector3f& direction);
 };
 

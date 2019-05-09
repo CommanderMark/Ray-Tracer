@@ -1,14 +1,15 @@
 #ifndef OBJECT_H_INCLUDED
 #define OBJECT_H_INCLUDED
 
+#include "../Math/Vector.h"
 #include "Ray.h"
+#include "Intersection.h"
 
 class Object {
-private:
-    Object();
-
 public:
-    virtual bool intersects(const Ray& ray)=0;
+    Vector3f color;
+
+    virtual Intersection intersects(const Ray& ray)=0;
 };
 
 #endif // OBJECT_H_INCLUDED
