@@ -3,7 +3,7 @@
 #include "Sphere.h"
 #include "../Math/Math.h"
 
-Sphere::Sphere(Vector3f center, float radius, Vector3f color) : center(center), radius(radius) {
+Sphere::Sphere(const Vector3f& center, float radius, const Vector3f& color) : center(center), radius(radius) {
     this->color = color;
 }
 

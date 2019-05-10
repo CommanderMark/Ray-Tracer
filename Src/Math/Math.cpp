@@ -1,3 +1,5 @@
+#include <cmath>
+
 #include "Math.h"
 
 Vector3f Math::closestPointOnLine(const Ray& ray, const Vector3f& rayToPoint) {
@@ -8,4 +10,8 @@ Vector3f Math::closestPointOnLine(const Ray& ray, const Vector3f& rayToPoint) {
     Vector3f finalPoint = ray.origin.add(projectionOfCenterOnLine);
 
     return finalPoint;
+}
+
+float Math::degToRad(float degree) {
+    return degree * M_PI / 180;
 }

@@ -11,7 +11,7 @@ class Object;
 
 class RayTracer {
 private:
-    Camera cam = Camera(Vector3f::zero, Vector3f(0, 1, 0), Vector3f::one);
+    Camera cam = Camera(Vector3f::one, Vector3f(0, 1, 0), Vector3f::zero, 90.0f);
 
     float fieldOfViewDeg;
     int imageWidth;
