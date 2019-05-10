@@ -19,31 +19,31 @@ Ray RayTracer::getPrimaryRay(int x, int y) {
     int planeHeight = imageHeight;
     int pixelWidth = planeWidth / imageWidth;
     int pixelHeight = planeHeight / imageHeight;
-    
+
     int FOVDeg = 170;
     float FOVRad = (float)FOVDeg * M_PI / 180;
     float distance = planeHeight / (std::tanf(FOVRad / 2) / 2);
-    
-    Vector3f centerOfPlane = cam.position.subtract(cam.forward.multiply(distance));
-    Vector3f bottomLeft = centerOfPlane.subtract(cam.right.multiply(planeWidth / 2.0f)).subtract(cam.up.multiply(planeHeight / 2.0f));
-    
-    Vector3f location = bottomLeft.add(cam.right.multiply(x).multiply(pixelWidth)).add(cam.up.multiply(y).multiply(pixelHeight));
-    
-    Vector3f pos = cam.position;
-    Vector3f dir = location.subtract(cam.position).normalize();
+
+    Vector3f centerOfPlane = cam.getPosition().subtract(cam.getForward().multiply(distance));
+    Vector3f bottomLeft = centerOfPlane.subtract(cam.getRight().multiply(planeWidth / 2.0f)).subtract(cam.getUp().multiply(planeHeight / 2.0f));
+
+    Vector3f location = bottomLeft.add(cam.getRight().multiply(x).multiply(pixelWidth)).add(cam.getUp().multiply(y).multiply(pixelHeight));
+
+    Vector3f pos = cam.getPosition();
+    Vector3f dir = location.subtract(cam.getPosition()).normalize();
 
     return Ray(pos, dir);
 }
 
 void RayTracer::rayTrace() {
     Vector3f camPos = Vector3f(0, 0, 50);
-    
+
     // Point to the origin.
     Vector3f lookAt = Vector3f(0, 0, 0);
-    
+
     // Unit vector that defines what "up" is since there's no way the camera can derive this.
     Vector3f viewUp = Vector3f(0, 1, 0);
-    
+
     cam = Camera(camPos, lookAt, viewUp);
 
     imageWidth = 780;

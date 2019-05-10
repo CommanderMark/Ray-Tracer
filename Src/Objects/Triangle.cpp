@@ -3,8 +3,7 @@
 #include "Triangle.h"
 #include "../Math/Math.h"
 
-Triangle::Triangle(const Vector3f& p1, const Vector3f& p2, const Vector3f& p3, Vector3f color)
-: p1(p1), p2(p2), p3(p3) {
+Triangle::Triangle(const Vector3f& p1, const Vector3f& p2, const Vector3f& p3, const Vector3f& color) : p1(p1), p2(p2), p3(p3) {
     this->color = color;
 }
 
@@ -22,7 +21,7 @@ Intersection Triangle::intersects(const Ray& ray) {
 
     float d = plane.dotProduct(p1);
     float t = (plane.dotProduct(ray.origin) + d) / dot;
-    
+
     // Check if the triangle is behind the ray.
     if (t < 0) {
         return Intersection();

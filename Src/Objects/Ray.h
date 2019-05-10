@@ -5,10 +5,10 @@
 
 class Ray {
 public:
-    Vector3f origin;
-    Vector3f direction;
+    const Vector3f origin;
+    const Vector3f direction;
 
-    Ray(Vector3f& origin, Vector3f& direction);
+    Ray(const Vector3f& origin, const Vector3f& direction);
 };
 
 #endif // RAY_H_INCLUDED

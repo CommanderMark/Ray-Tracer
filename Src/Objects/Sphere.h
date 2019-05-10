@@ -5,11 +5,11 @@
 
 class Sphere : public Object {
 private:
+    Vector3f center;
     float radius;
 
 public:
-    Vector3f center;
-    Sphere(Vector3f center, float radius, Vector3f color);
+    Sphere(const Vector3f& center, float radius, const Vector3f& color);
 
     Intersection intersects(const Ray& ray) override;
 };
