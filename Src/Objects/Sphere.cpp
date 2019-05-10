@@ -50,6 +50,7 @@ Intersection Sphere::intersects(const Ray& ray) {
                 // Ray is outside sphere.
                 distanceToIntersectPoint = projectedPoint.subtract(ray.origin).length() - distance;
             } else {
+                // Ray is inside sphere.
                 distanceToIntersectPoint = projectedPoint.subtract(ray.origin).length() + distance;
             }
 

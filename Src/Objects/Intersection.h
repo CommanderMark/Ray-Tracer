@@ -8,10 +8,11 @@ class Object;
 class Intersection {
 private:
     bool hit;
+
+public:
     const Object* obj;
     Vector3f contact;
 
-public:
     Intersection();
     Intersection(const Object* obj, Vector3f contact);
 
