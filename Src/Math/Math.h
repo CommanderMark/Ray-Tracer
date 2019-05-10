@@ -6,7 +6,7 @@
 
 class Math {
 public:
-    const static float MARGIN_ERROR = 0.001;
+    constexpr static float MARGIN_ERROR = 0.001;
 
     // Finds the point on a given line (ray) that is closest to a specified point.
     static Vector3f closestPointOnLine(const Ray& ray, const Vector3f& rayToPoint);

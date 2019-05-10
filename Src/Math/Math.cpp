@@ -1,6 +1,6 @@
 #include "Math.h"
 
-Vector3f closestPointOnLine(const Ray& ray, const Vector3f& rayToPoint) {
+Vector3f Math::closestPointOnLine(const Ray& ray, const Vector3f& rayToPoint) {
     // Remember linear algebra? Project the point on ray line.
     Vector3f projectionOfCenterOnLine = ray.direction.multiply(ray.direction.dotProduct(rayToPoint));
 

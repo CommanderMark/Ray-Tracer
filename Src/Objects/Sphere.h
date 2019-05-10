@@ -3,13 +3,13 @@
 
 #include "Object.h"
 
-class Sphere : Object {
+class Sphere : public Object {
 private:
-    Vector3f center;
     float radius;
 
 public:
-    Sphere(Vector3f& center, float radius, Vector3f color);
+    Vector3f center;
+    Sphere(Vector3f center, float radius, Vector3f color);
 
     Intersection intersects(const Ray& ray) override;
 };
