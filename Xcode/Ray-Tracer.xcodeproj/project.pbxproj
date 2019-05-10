@@ -95,9 +95,9 @@
 			isa = PBXGroup;
 			children = (
 				197D3E59228521EB0056FA6F /* Main.cpp */,
+				197DD0A0228504AF004DACDE /* CImg.h */,
 				197DD0B1228504AF004DACDE /* RayTracer.h */,
 				197DD09F228504AF004DACDE /* RayTracer.cpp */,
-				197DD0A0228504AF004DACDE /* CImg.h */,
 				197DD0A1228504AF004DACDE /* Objects */,
 				197DD0AA228504AF004DACDE /* Math */,
 			);
@@ -110,12 +110,12 @@
 			children = (
 				190AF13122855BB6008DEC98 /* Camera.h */,
 				190AF13222855BB6008DEC98 /* Camera.cpp */,
-				197DD0A8228504AF004DACDE /* Object.h */,
-				197DD0A5228504AF004DACDE /* Object.cpp */,
 				197DD0A7228504AF004DACDE /* Ray.h */,
 				197DD0A6228504AF004DACDE /* Ray.cpp */,
 				197DD0A3228504AF004DACDE /* Intersection.h */,
 				197DD0A2228504AF004DACDE /* Intersection.cpp */,
+				197DD0A8228504AF004DACDE /* Object.h */,
+				197DD0A5228504AF004DACDE /* Object.cpp */,
 				197DD0A4228504AF004DACDE /* Sphere.h */,
 				197DD0A9228504AF004DACDE /* Sphere.cpp */,
 				190AF135228563FB008DEC98 /* Triangle.h */,
@@ -127,12 +127,12 @@
 		197DD0AA228504AF004DACDE /* Math */ = {
 			isa = PBXGroup;
 			children = (
+				197DD0AF228504AF004DACDE /* Math.h */,
 				197DD0AB228504AF004DACDE /* Math.cpp */,
 				197DD0AC228504AF004DACDE /* Matrix.h */,
-				197DD0AD228504AF004DACDE /* Vector.cpp */,
 				197DD0AE228504AF004DACDE /* Matrix.cpp */,
-				197DD0AF228504AF004DACDE /* Math.h */,
 				197DD0B0228504AF004DACDE /* Vector.h */,
+				197DD0AD228504AF004DACDE /* Vector.cpp */,
 			);
 			path = Math;
 			sourceTree = "<group>";
