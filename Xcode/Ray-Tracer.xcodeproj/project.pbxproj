@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190AF13322855BB6008DEC98 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190AF13222855BB6008DEC98 /* Camera.cpp */; };
+		190AF136228563FB008DEC98 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190AF134228563FB008DEC98 /* Triangle.cpp */; };
 		197D3E58228521BA0056FA6F /* libX11.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 197D3E57228521BA0056FA6F /* libX11.6.dylib */; };
 		197D3E5A228521EB0056FA6F /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197D3E59228521EB0056FA6F /* Main.cpp */; };
 		197DD0B2228504AF004DACDE /* RayTracer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197DD09F228504AF004DACDE /* RayTracer.cpp */; };
@@ -32,10 +34,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		190AF13122855BB6008DEC98 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		190AF13222855BB6008DEC98 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		190AF134228563FB008DEC98 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triangle.cpp; sourceTree = "<group>"; };
+		190AF135228563FB008DEC98 /* Triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Triangle.h; sourceTree = "<group>"; };
 		194B6BC52285047E0028904C /* Ray-Tracer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Ray-Tracer"; sourceTree = BUILT_PRODUCTS_DIR; };
 		197D3E57228521BA0056FA6F /* libX11.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libX11.6.dylib; path = ../../../../../../../opt/X11/lib/libX11.6.dylib; sourceTree = "<group>"; };
 		197D3E59228521EB0056FA6F /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
-		197DD09F228504AF004DACDE /* RayTracer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.cpp.cpp; path = RayTracer.cpp; sourceTree = "<group>"; };
+		197DD09F228504AF004DACDE /* RayTracer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RayTracer.cpp; sourceTree = "<group>"; };
 		197DD0A0228504AF004DACDE /* CImg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CImg.h; sourceTree = "<group>"; };
 		197DD0A2228504AF004DACDE /* Intersection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Intersection.cpp; sourceTree = "<group>"; };
 		197DD0A3228504AF004DACDE /* Intersection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Intersection.h; sourceTree = "<group>"; };
@@ -102,6 +108,8 @@
 		197DD0A1228504AF004DACDE /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				190AF13122855BB6008DEC98 /* Camera.h */,
+				190AF13222855BB6008DEC98 /* Camera.cpp */,
 				197DD0A8228504AF004DACDE /* Object.h */,
 				197DD0A5228504AF004DACDE /* Object.cpp */,
 				197DD0A7228504AF004DACDE /* Ray.h */,
@@ -110,6 +118,8 @@
 				197DD0A2228504AF004DACDE /* Intersection.cpp */,
 				197DD0A4228504AF004DACDE /* Sphere.h */,
 				197DD0A9228504AF004DACDE /* Sphere.cpp */,
+				190AF135228563FB008DEC98 /* Triangle.h */,
+				190AF134228563FB008DEC98 /* Triangle.cpp */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -195,8 +205,10 @@
 			files = (
 				197D3E5A228521EB0056FA6F /* Main.cpp in Sources */,
 				197DD0B9228504AF004DACDE /* Matrix.cpp in Sources */,
+				190AF13322855BB6008DEC98 /* Camera.cpp in Sources */,
 				197DD0B5228504AF004DACDE /* Ray.cpp in Sources */,
 				197DD0B8228504AF004DACDE /* Vector.cpp in Sources */,
+				190AF136228563FB008DEC98 /* Triangle.cpp in Sources */,
 				197DD0B3228504AF004DACDE /* Intersection.cpp in Sources */,
 				197DD0B2228504AF004DACDE /* RayTracer.cpp in Sources */,
 				197DD0B7228504AF004DACDE /* Math.cpp in Sources */,

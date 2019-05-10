@@ -10,7 +10,7 @@ public:
     Vector3f right;
     Vector3f forward;
 
-    Camera(const Vector3f& pos, const Vector3f& lookAt);
+    Camera(const Vector3f& pos, const Vector3f& lookAt, const Vector3f& viewUp);
 };
 
 #endif // CAMERA_H_INCLUDED

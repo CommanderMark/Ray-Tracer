@@ -123,7 +123,11 @@ Vector3f Vector3f::multiply(float s) const {
 }
 
 Vector3f Vector3f::normalize() const {
-    return multiply(1.f/length());
+    float length = this->length();
+    if (length == 0) {
+        return 0;
+    }
+    return multiply(1.f/this->length());
 }
 
 Vector3f Vector3f::reflect(const Vector3f& n) const {

@@ -1,10 +1,14 @@
 #include "Camera.h"
 
-Camera::Camera(const Vector3f& pos, const Vector3f& lookAt) {
+Camera::Camera(const Vector3f& pos, const Vector3f& lookAt, const Vector3f& viewUp) {
     position = pos;
-
-    // I have no clue what I'm doing.
+    
+    // Direction from camera to lookAt.
     forward = lookAt.subtract(position).normalize();
-    right = forward.crossProduct(Vector3f(0.0, -1.0, 0.0)).normalize().multiply(1.5f);
-    up = forward.crossProduct(right).normalize().multiply(1.5f);
+    
+    // Based on whatever we defined the "up" as, is should be on the pixel plane.
+    // Perform cross product with viewup and forward to get right.
+    right = forward.crossProduct(viewUp).normalize();
+    
+    up = forward.crossProduct(right).normalize();
 }

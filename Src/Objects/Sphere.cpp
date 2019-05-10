@@ -8,55 +8,6 @@ Sphere::Sphere(Vector3f center, float radius, Vector3f color) : center(center), 
 }
 
 Intersection Sphere::intersects(const Ray& ray) {
-    // TODO: remove all of this and replace it with the commented out code.
-    Vector3f deltap = ray.origin.subtract(center);
-    float a = ray.direction.dotProduct(ray.direction);
-    float b = deltap.dotProduct(ray.direction) * 2;
-    float c = deltap.dotProduct(deltap) - (radius * radius);
-
-    double disc = b * b - 4 * a * c;
-    if (disc < 0) {
-        return Intersection(); // No intersection.
-    }
-
-    disc = sqrt(disc);
-
-    double q;
-    if (b < 0) {
-        q = (-b - disc) * 0.5;
-    } else {
-        q = (-b + disc) * 0.5;
-    }
-
-    double r1 = q / a;
-    double r2 = c / q;
-
-    if (r1 > r2) {
-        double tmp = r1;
-        r1 = r2;
-        r2 = tmp;
-    }
-
-    double distance = r1;
-    if (distance < 0) {
-        distance = r2;
-    }
-
-    if (distance < 0 || isnan(distance)) {
-        return Intersection(); // No intersection.
-    }
-
-    Vector3f point = ray.origin.add (ray.direction.multiply(distance));
-//    Vector normal = (point - center).normalize();
-//
-//    normal = material->modifyNormal(normal, point);
-
-    // Normal needs to be flipped if this is a refractive ray.
-//    if (ray.direction.dotProduct(normal) > 0) {
-//        normal = normal * -1;
-//    }
-
-    return Intersection(this, point);
 //    float radiusSquared = radius * radius;
 //
 //    // Vector from ray origin to the center of the sphere.

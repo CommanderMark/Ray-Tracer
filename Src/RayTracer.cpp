@@ -4,6 +4,7 @@
 #include "Objects/Intersection.h"
 #include "Objects/Object.h"
 #include "Objects/Sphere.h"
+#include "Objects/Triangle.h"
 #include "CImg.h"
 
 #include <iostream>
@@ -13,28 +14,57 @@ float RayTracer::getAspectRatio() {
 }
 
 Ray RayTracer::getPrimaryRay(int x, int y) {
-   Vector3f direction = Vector3f(x, y, 5).normalize();
-   Vector3f origin = Vector3f(x, y, 0);
+    // From: http://web.cse.ohio-state.edu/~shen.94/681/Site/Slides_files/basic_algo.pdf
+    int planeWidth = imageWidth;
+    int planeHeight = imageHeight;
+    int pixelWidth = planeWidth / imageWidth;
+    int pixelHeight = planeHeight / imageHeight;
+    
+    int FOVDeg = 170;
+    float FOVRad = (float)FOVDeg * M_PI / 180;
+    float distance = planeHeight / (std::tanf(FOVRad / 2) / 2);
+    
+    Vector3f centerOfPlane = cam.position.subtract(cam.forward.multiply(distance));
+    Vector3f bottomLeft = centerOfPlane.subtract(cam.right.multiply(planeWidth / 2.0f)).subtract(cam.up.multiply(planeHeight / 2.0f));
+    
+    Vector3f location = bottomLeft.add(cam.right.multiply(x).multiply(pixelWidth)).add(cam.up.multiply(y).multiply(pixelHeight));
+    
+    Vector3f pos = cam.position;
+    Vector3f dir = location.subtract(cam.position).normalize();
 
-   return Ray(origin, direction);
+    return Ray(pos, dir);
 }
 
 void RayTracer::rayTrace() {
-    cam = Camera(Vector3f(8, 8, 8), Vector3f(0, 0, 0));
+    Vector3f camPos = Vector3f(0, 0, 50);
+    
+    // Unit vector that defines what "up" is since there's no way the camera can derive this.
+    Vector3f viewUp = Vector3f(0, 1, 0);
+    
+    // Point to the origin.
+    Vector3f lookAt = Vector3f(0, 0, 24);
+    
+    cam = Camera(camPos, viewUp, lookAt);
 
-    fieldOfViewDeg = 90;
-    imageWidth = 720;
-    imageHeight = 480;
+    imageWidth = 780;
+    imageHeight = 720;
     backgroundColor = Vector3f(0,0,0); // Black.
-    objects.push_back(new Sphere(Vector3f(imageWidth / 2, imageHeight / 2, 5), 16, Vector3f(0,255,0)));
+    objects.push_back(new Sphere(Vector3f(0, -20, 180), 100, Vector3f(255,0,0)));
+    objects.push_back(new Triangle(
+        Vector3f(0, 0, 0),
+        Vector3f(0, 125, 0),
+        Vector3f(125, 0, 0),
+        Vector3f(0, 125, 0)
+    )
+                      );
 
-    Vector3f finalImage[imageWidth * imageHeight];
+    Vector3f finalImage[imageHeight][imageWidth];
 
-    for (int y = 1; y <= imageHeight; y++) {
-        for (int x = 1; x <= imageWidth; x++) {
+    for (int y = 0; y < imageHeight; y++) {
+        for (int x = 0; x < imageWidth; x++) {
             Ray primaryRay = getPrimaryRay(x, y);
             Vector3f finalColor = computeRay(primaryRay);
-            finalImage[(x - 1) + (y - 1)] = finalColor;
+            finalImage[y][x] = finalColor;
         }
     }
 
@@ -42,9 +72,9 @@ void RayTracer::rayTrace() {
     cimg_library::CImg<float> img(imageWidth, imageHeight, 1, 3);
     cimg_forXY(img,x,y) {
         float color[3];
-        color[0] = finalImage[x + y].x; // R
-        color[1] = finalImage[x + y].y; // G
-        color[2] = finalImage[x + y].z; // B
+        color[0] = finalImage[y][x].x; // R
+        color[1] = finalImage[y][x].y; // G
+        color[2] = finalImage[y][x].z; // B
 
         img.draw_point(x, y, color);
     }
@@ -72,12 +102,6 @@ Vector3f RayTracer::computeRay(const Ray& ray) {
 
     // TODO: Shadow rays god dammit.
     if (closestIntersect.didHit()) {
-       Sphere* sp = (Sphere*)objects[0];
-//       if (std::abs(sp->center.x - closestIntersect.contact.x) > 4
-//           || std::abs(sp->center.y - closestIntersect.contact.y) > 4
-//           || std::abs(sp->center.z - closestIntersect.contact.z) > 4) {
-//          std::cout << "yikes";
-//       }
         return closestIntersect.obj->color;
     }
 
