@@ -5,6 +5,7 @@
 #include "Objects/Object.h"
 #include "Objects/Sphere.h"
 #include "Objects/Triangle.h"
+#include "Objects/Plane.h"
 #include "CImg.h"
 
 #include <iostream>
@@ -49,12 +50,17 @@ void RayTracer::rayTrace() {
 
     imageWidth = 780;
     imageHeight = 720;
-    backgroundColor = Vector3f(0,0,0); // Black.
-    objects.push_back(new Sphere(Vector3f(0, 0, -13), 14, Vector3f(255,0,0)));
-    objects.push_back(new Triangle(Vector3f(0, 0, 0),
-        Vector3f(0, 40, 0),
-        Vector3f(40, 40, 0),
-        Vector3f(0, 255, 0)));
+    
+    backgroundColor = Vector3f(50, 50, 50);
+    lightPosition = Vector3f(10, 20, 0);
+    shadowColor = Vector3f(0, 0, 0);
+    
+    objects.push_back(new Sphere(Vector3f(0, 10, 0), 5, Vector3f(255,0,0)));
+    objects.push_back(new Triangle(Vector3f(30, 0, 0),
+                                   Vector3f(20, 0, 0),
+                                   Vector3f(50, 40, -20),
+                                   Vector3f(0, 255, 10)));
+    objects.push_back(new Plane(Vector3f(-10, 0, 0), Vector3f(10, 0, 0), Vector3f(0, 10, -20), Vector3f(255, 255, 255)));
 
     Vector3f finalImage[imageHeight][imageWidth];
 
@@ -98,8 +104,29 @@ Vector3f RayTracer::computeRay(const Ray& ray) {
         }
     }
 
-    // TODO: Shadow rays god dammit.
     if (closestIntersect.didHit()) {
+        // Check if the light source has line of sight towards the object.
+        // Move the contact point one unit towards the camera to avoid colliding with the initial object.
+        Vector3f inverseDir = ray.direction.multiply(1.0f / ray.direction.lengthSquared());
+        Vector3f position = closestIntersect.contact.subtract(inverseDir);
+        Vector3f direction = lightPosition.subtract(position).normalize();
+        
+        Ray shadowRay = Ray(position, direction);
+        bool isInShadow = false;
+        
+        for (int i = 0; i < (int)objects.size(); i++) {
+            Intersection intersect = objects[i]->intersects(shadowRay);
+            
+            if (intersect.didHit()) {
+                isInShadow = true;
+                break;
+            }
+        }
+        
+        if (isInShadow) {
+            return shadowColor;
+        }
+        
         return closestIntersect.obj->color;
     }
 

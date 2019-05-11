@@ -5,10 +5,11 @@
 
 class Plane : public Object {
 private:
+    Vector3f center;
     Vector3f normal;
 
 public:
-    Plane(const Vector3f& normal, const Vector3f& color);
+    Plane(const Vector3f& p1, const Vector3f& p2, const Vector3f& p3, const Vector3f& color);
 
     Intersection intersects(const Ray& ray) override;
 };

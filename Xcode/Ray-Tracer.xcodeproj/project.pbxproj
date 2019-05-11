@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		190AF13322855BB6008DEC98 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190AF13222855BB6008DEC98 /* Camera.cpp */; };
 		190AF136228563FB008DEC98 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 190AF134228563FB008DEC98 /* Triangle.cpp */; };
+		1956B78522867A0C00707BCF /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1956B78422867A0C00707BCF /* Plane.cpp */; };
 		197D3E58228521BA0056FA6F /* libX11.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 197D3E57228521BA0056FA6F /* libX11.6.dylib */; };
 		197D3E5A228521EB0056FA6F /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197D3E59228521EB0056FA6F /* Main.cpp */; };
 		197DD0B2228504AF004DACDE /* RayTracer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197DD09F228504AF004DACDE /* RayTracer.cpp */; };
@@ -39,6 +40,8 @@
 		190AF134228563FB008DEC98 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triangle.cpp; sourceTree = "<group>"; };
 		190AF135228563FB008DEC98 /* Triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Triangle.h; sourceTree = "<group>"; };
 		194B6BC52285047E0028904C /* Ray-Tracer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Ray-Tracer"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1956B78322867A0C00707BCF /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
+		1956B78422867A0C00707BCF /* Plane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plane.cpp; sourceTree = "<group>"; };
 		197D3E57228521BA0056FA6F /* libX11.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libX11.6.dylib; path = ../../../../../../../opt/X11/lib/libX11.6.dylib; sourceTree = "<group>"; };
 		197D3E59228521EB0056FA6F /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
 		197DD09F228504AF004DACDE /* RayTracer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RayTracer.cpp; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 				197DD0A9228504AF004DACDE /* Sphere.cpp */,
 				190AF135228563FB008DEC98 /* Triangle.h */,
 				190AF134228563FB008DEC98 /* Triangle.cpp */,
+				1956B78322867A0C00707BCF /* Plane.h */,
+				1956B78422867A0C00707BCF /* Plane.cpp */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 				197DD0B5228504AF004DACDE /* Ray.cpp in Sources */,
 				197DD0B8228504AF004DACDE /* Vector.cpp in Sources */,
 				190AF136228563FB008DEC98 /* Triangle.cpp in Sources */,
+				1956B78522867A0C00707BCF /* Plane.cpp in Sources */,
 				197DD0B3228504AF004DACDE /* Intersection.cpp in Sources */,
 				197DD0B2228504AF004DACDE /* RayTracer.cpp in Sources */,
 				197DD0B7228504AF004DACDE /* Math.cpp in Sources */,

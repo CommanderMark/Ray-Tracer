@@ -13,14 +13,15 @@ class RayTracer {
 private:
     Camera cam = Camera(Vector3f::one, Vector3f(0, 1, 0), Vector3f::zero, 90.0f);
 
-    float fieldOfViewDeg;
     int imageWidth;
     int imageHeight;
+    float getAspectRatio();
+    
+    Vector3f backgroundColor;
+    Vector3f lightPosition;
+    Vector3f shadowColor;
 
     std::vector<Object*> objects;
-    Vector3f backgroundColor;
-
-    float getAspectRatio();
 
     Ray getPrimaryRay(int x, int y);
     Vector3f computeRay(const Ray& ray);
