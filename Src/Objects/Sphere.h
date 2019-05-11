@@ -9,7 +9,7 @@ private:
     float radius;
 
 public:
-    Sphere(const Vector3f& center, float radius, const Vector3f& color);
+    Sphere(const Vector3f& center, float radius, const Vector3f& diff, const Vector3f& spec = Vector3f::zero, const Vector3f& amb = Vector3f::zero);
 
     Intersection intersects(const Ray& ray) override;
 };

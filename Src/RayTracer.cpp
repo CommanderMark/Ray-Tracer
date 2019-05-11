@@ -101,7 +101,7 @@ Vector3f RayTracer::computeRay(const Ray& ray) const {
             return Vector3f::zero;
         }
 
-        return closestIntersect.obj->color;
+        return closestIntersect.obj->getDiffuseColor();
     }
 
     return backgroundColor;

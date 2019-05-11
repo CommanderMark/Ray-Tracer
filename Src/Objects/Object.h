@@ -6,8 +6,17 @@
 #include "Intersection.h"
 
 class Object {
+private:
+    Vector3f diffuseColor;
+    Vector3f specularColor;
+    Vector3f ambientColor;
+
 public:
-    Vector3f color;
+    Object(const Vector3f& diff, const Vector3f& spec, const Vector3f& amb);
+
+    const Vector3f getDiffuseColor() const;
+    const Vector3f getSpecularColor() const;
+    const Vector3f getAmbientColor() const;
 
     virtual Intersection intersects(const Ray& ray)=0;
 };

@@ -3,9 +3,8 @@
 #include "Sphere.h"
 #include "../Math/Math.h"
 
-Sphere::Sphere(const Vector3f& center, float radius, const Vector3f& color) : center(center), radius(radius) {
-    this->color = color;
-}
+Sphere::Sphere(const Vector3f& center, float radius, const Vector3f& diff, const Vector3f& spec, const Vector3f& amb)
+: Object(diff, spec, amb), center(center), radius(radius) { }
 
 Intersection Sphere::intersects(const Ray& ray) {
     float radiusSquared = radius * radius;

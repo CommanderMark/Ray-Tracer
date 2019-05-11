@@ -72,7 +72,7 @@ Vector3f Vector3f::reflect(const Vector3f& n) const {
 }
 
 Vector3f Vector3f::invert() const {
-    return multiply(1.0f / lengthSquared());
+    return Vector3f(-x, -y, -z);
 }
 
 float Vector3f::dotProduct(const Vector3f& b) const {
