@@ -18,7 +18,7 @@ Intersection Plane::intersects(const Ray& ray) {
         float t = center.subtract(ray.origin).dotProduct(normal) / denom;
         if (t > Math::MARGIN_ERROR) {
             Vector3f contact = ray.origin.add(ray.direction.multiply(t));
-            return Intersection(this, contact);
+            return Intersection(this, contact, normal);
         }
     }
 

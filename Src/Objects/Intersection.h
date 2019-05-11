@@ -12,9 +12,10 @@ private:
 public:
     const Object* obj;
     Vector3f contact;
+    Vector3f normal;
 
     Intersection();
-    Intersection(const Object* obj, Vector3f contact);
+    Intersection(const Object* obj, const Vector3f& contact, const Vector3f& surfaceNormal);
 
     bool didHit();
 };

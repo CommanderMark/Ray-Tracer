@@ -22,7 +22,7 @@ Intersection Sphere::intersects(const Ray& ray) {
             return Intersection();
         } else if (std::abs(distanceSquared - radiusSquared) < Math::MARGIN_ERROR) {
             // Ray origin is right on the sphere.
-            return Intersection(this, ray.origin);
+            return Intersection(this, ray.origin, getNormal(ray.origin));
         } else {
             // We're inside the sphere, yikes.
 
@@ -33,7 +33,7 @@ Intersection Sphere::intersects(const Ray& ray) {
             float distanceToIntersectPoint = distance - projectedPoint.subtract(ray.origin).length();
             Vector3f intersectPoint = ray.origin.add(ray.direction.multiply(distanceToIntersectPoint));
 
-            return Intersection(this, intersectPoint);
+            return Intersection(this, intersectPoint, getNormal(intersectPoint));
         }
     } else {
         // Center of sphere is in front of the ray.
@@ -54,7 +54,11 @@ Intersection Sphere::intersects(const Ray& ray) {
             }
 
             Vector3f intersectPoint = ray.origin.add(ray.direction.multiply(distanceToIntersectPoint));
-            return Intersection(this, intersectPoint);
+            return Intersection(this, intersectPoint, getNormal(intersectPoint));
         }
     }
+}
+
+const Vector3f Sphere::getNormal(const Vector3f& point) {
+    return point.subtract(center).normalize();
 }
