@@ -13,6 +13,7 @@ private:
 
 public:
     Object(const Vector3f& diff, const Vector3f& spec, const Vector3f& amb);
+    virtual ~Object()=default;
 
     const Vector3f getDiffuseColor() const;
     const Vector3f getSpecularColor() const;
