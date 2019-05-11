@@ -15,19 +15,25 @@ private:
 
     int imageWidth;
     int imageHeight;
+    int pixelWidth;
+    int pixelHeight;
     float getAspectRatio();
-    
-    Vector3f backgroundColor;
-    Vector3f lightPosition;
-    Vector3f shadowColor;
 
-    std::vector<Object*> objects;
+    Vector3f centerOfPlane;
+    Vector3f bottomLeftOfPlane;
 
     Ray getPrimaryRay(int x, int y);
     Vector3f computeRay(const Ray& ray);
 
 public:
-    void rayTrace();
+    Vector3f backgroundColor;
+    Vector3f lightPosition;
+
+    std::vector<Object*> objects;
+
+    RayTracer(const Camera& camera, int imageWidth, int imageHeight, int planeWidth, int planeHeight);
+
+    void rayTrace(const char outputFile[]);
 };
 
 #endif // RAYTRACER_H_INCLUDED

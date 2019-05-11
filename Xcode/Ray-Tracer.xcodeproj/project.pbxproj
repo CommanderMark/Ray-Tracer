@@ -19,7 +19,6 @@
 		197DD0B6228504AF004DACDE /* Sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197DD0A9228504AF004DACDE /* Sphere.cpp */; };
 		197DD0B7228504AF004DACDE /* Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197DD0AB228504AF004DACDE /* Math.cpp */; };
 		197DD0B8228504AF004DACDE /* Vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197DD0AD228504AF004DACDE /* Vector.cpp */; };
-		197DD0B9228504AF004DACDE /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197DD0AE228504AF004DACDE /* Matrix.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,9 +54,7 @@
 		197DD0A8228504AF004DACDE /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
 		197DD0A9228504AF004DACDE /* Sphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sphere.cpp; sourceTree = "<group>"; };
 		197DD0AB228504AF004DACDE /* Math.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Math.cpp; sourceTree = "<group>"; };
-		197DD0AC228504AF004DACDE /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 		197DD0AD228504AF004DACDE /* Vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector.cpp; sourceTree = "<group>"; };
-		197DD0AE228504AF004DACDE /* Matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix.cpp; sourceTree = "<group>"; };
 		197DD0AF228504AF004DACDE /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
 		197DD0B0228504AF004DACDE /* Vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
 		197DD0B1228504AF004DACDE /* RayTracer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RayTracer.h; sourceTree = "<group>"; };
@@ -134,8 +131,6 @@
 			children = (
 				197DD0AF228504AF004DACDE /* Math.h */,
 				197DD0AB228504AF004DACDE /* Math.cpp */,
-				197DD0AC228504AF004DACDE /* Matrix.h */,
-				197DD0AE228504AF004DACDE /* Matrix.cpp */,
 				197DD0B0228504AF004DACDE /* Vector.h */,
 				197DD0AD228504AF004DACDE /* Vector.cpp */,
 			);
@@ -209,7 +204,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				197D3E5A228521EB0056FA6F /* Main.cpp in Sources */,
-				197DD0B9228504AF004DACDE /* Matrix.cpp in Sources */,
 				190AF13322855BB6008DEC98 /* Camera.cpp in Sources */,
 				197DD0B5228504AF004DACDE /* Ray.cpp in Sources */,
 				197DD0B8228504AF004DACDE /* Vector.cpp in Sources */,
