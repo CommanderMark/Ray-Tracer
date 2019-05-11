@@ -15,7 +15,7 @@ Camera::Camera(const Vector3f& pos, const Vector3f& lookAt, const Vector3f& view
     up = forward.crossProduct(right).normalize();
 }
 
-const Vector3f Camera::getPosition() {
+const Vector3f Camera::getPosition() const {
     return position;
 }
 
@@ -23,14 +23,14 @@ float Camera::getFOV() {
     return fov;
 }
 
-const Vector3f Camera::getForward() {
+const Vector3f Camera::getForward() const {
     return forward;
 }
 
-const Vector3f Camera::getUp() {
+const Vector3f Camera::getUp() const {
     return up;
 }
 
-const Vector3f Camera::getRight() {
+const Vector3f Camera::getRight() const {
     return right;
 }

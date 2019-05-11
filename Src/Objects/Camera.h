@@ -14,12 +14,12 @@ private:
     Vector3f right;
 
 public:
-    const Vector3f getPosition();
+    const Vector3f getPosition() const;
     float getFOV();
 
-    const Vector3f getForward();
-    const Vector3f getUp();
-    const Vector3f getRight();
+    const Vector3f getForward() const;
+    const Vector3f getUp() const;
+    const Vector3f getRight() const;
 
     Camera(const Vector3f& pos, const Vector3f& lookAt, const Vector3f& viewUp, float fov);
 };

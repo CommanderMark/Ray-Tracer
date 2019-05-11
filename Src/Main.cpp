@@ -2,6 +2,7 @@
 #include "Objects/Sphere.h"
 #include "Objects/Triangle.h"
 #include "Objects/Plane.h"
+#include "Objects/Light.h"
 
 int main(int argc, char** argv) {
     Vector3f camPos = Vector3f(0, 0, 30);
@@ -22,7 +23,7 @@ int main(int argc, char** argv) {
     RayTracer rt = RayTracer(cam, imageWidth, imageHeight, imageWidth, imageHeight);
 
     rt.backgroundColor = Vector3f(0.2f, 0.2f, 0.2f);
-    rt.lightPosition = Vector3f(10, 20, 0);
+    rt.lights.push_back(new Light(Vector3f(10, 20, 0), Vector3f::one));
 
     rt.objects.push_back(new Sphere(Vector3f(0, 10, 0), 5, Vector3f(1.0f, 0, 0)));
     rt.objects.push_back(new Triangle(Vector3f(30, 0, 0),

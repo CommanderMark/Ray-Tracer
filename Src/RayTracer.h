@@ -8,6 +8,7 @@
 #include "Objects/Camera.h"
 
 class Object;
+class Light;
 
 class RayTracer {
 private:
@@ -17,23 +18,24 @@ private:
     int imageHeight;
     int pixelWidth;
     int pixelHeight;
-    float getAspectRatio();
+    float getAspectRatio() const;
 
     Vector3f centerOfPlane;
     Vector3f bottomLeftOfPlane;
 
-    Ray getPrimaryRay(int x, int y);
-    Vector3f computeRay(const Ray& ray);
+    Ray getPrimaryRay(int x, int y) const;
+    Vector3f computeRay(const Ray& ray) const;
 
 public:
     Vector3f backgroundColor;
-    Vector3f lightPosition;
 
     std::vector<Object*> objects;
+    std::vector<Light*> lights;
 
     RayTracer(const Camera& camera, int imageWidth, int imageHeight, int planeWidth, int planeHeight);
+    ~RayTracer();
 
-    void rayTrace(const char outputFile[]);
+    void rayTrace(const char outputFile[]) const;
 };
 
 #endif // RAYTRACER_H_INCLUDED
