@@ -37,7 +37,7 @@ Ray RayTracer::getPrimaryRay(int x, int y) {
 }
 
 void RayTracer::rayTrace() {
-    Vector3f camPos = Vector3f(0, 0, 50);
+    Vector3f camPos = Vector3f(0, 0, 30);
 
     // Point to the origin.
     Vector3f lookAt = Vector3f(0, 0, 0);
@@ -50,14 +50,11 @@ void RayTracer::rayTrace() {
     imageWidth = 780;
     imageHeight = 720;
     backgroundColor = Vector3f(0,0,0); // Black.
-    objects.push_back(new Sphere(Vector3f(0, 0, 0), 15, Vector3f(255,0,0)));
-    objects.push_back(new Triangle(
-        Vector3f(0, 0, 0),
-        Vector3f(0, 125, 0),
-        Vector3f(125, 0, 0),
-        Vector3f(0, 125, 0)
-    )
-                      );
+    objects.push_back(new Sphere(Vector3f(0, 0, -13), 14, Vector3f(255,0,0)));
+    objects.push_back(new Triangle(Vector3f(0, 0, 0),
+        Vector3f(0, 40, 0),
+        Vector3f(40, 40, 0),
+        Vector3f(0, 255, 0)));
 
     Vector3f finalImage[imageHeight][imageWidth];
 
