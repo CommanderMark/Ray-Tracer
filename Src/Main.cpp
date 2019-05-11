@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
 
     Camera cam = Camera(camPos, lookAt, viewUp, fovInDegrees);
 
-    int imageWidth = 780;
+    int imageWidth = 1280;
     int imageHeight = 720;
 
     RayTracer rt = RayTracer(cam, imageWidth, imageHeight, imageWidth, imageHeight);

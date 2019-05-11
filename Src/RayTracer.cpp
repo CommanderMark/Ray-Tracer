@@ -34,23 +34,16 @@ Ray RayTracer::getPrimaryRay(int x, int y) {
 }
 
 void RayTracer::rayTrace(const char outputFile[]) {
-    Vector3f finalImage[imageHeight][imageWidth];
-
-    for (int y = 0; y < imageHeight; y++) {
-        for (int x = 0; x < imageWidth; x++) {
-            Ray primaryRay = getPrimaryRay(x, y);
-            Vector3f finalColor = computeRay(primaryRay);
-            finalImage[y][x] = finalColor;
-        }
-    }
-
     // Generate output image.
     cimg_library::CImg<float> img(imageWidth, imageHeight, 1, 3);
     cimg_forXY(img,x,y) {
+        Ray primaryRay = getPrimaryRay(x, y);
+        Vector3f finalColor = computeRay(primaryRay);
+
         float color[3];
-        color[0] = finalImage[y][x].x * 255.0f; // R
-        color[1] = finalImage[y][x].y * 255.0f; // G
-        color[2] = finalImage[y][x].z * 255.0f; // B
+        color[0] = finalColor.x * 255.0f; // R
+        color[1] = finalColor.y * 255.0f; // G
+        color[2] = finalColor.z * 255.0f; // B
 
         img.draw_point(x, y, color);
     }
