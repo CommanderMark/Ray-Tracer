@@ -3,8 +3,8 @@
 #include "Sphere.h"
 #include "../Math/Math.h"
 
-Sphere::Sphere(const Vector3f& center, float radius, const Vector3f& diff, const Vector3f& spec, const Vector3f& amb)
-: Object(diff, spec, amb), center(center), radius(radius) { }
+Sphere::Sphere(const Vector3f& center, float radius, const Vector3f& diff, const Vector3f& spec, const Vector3f& amb, float shininessCoe)
+: Object(diff, spec, amb, shininessCoe), center(center), radius(radius) { }
 
 Intersection Sphere::intersects(const Ray& ray) {
     float radiusSquared = radius * radius;
@@ -59,6 +59,6 @@ Intersection Sphere::intersects(const Ray& ray) {
     }
 }
 
-const Vector3f Sphere::getNormal(const Vector3f& point) {
+const Vector3f Sphere::getNormal(const Vector3f& point) const {
     return point.subtract(center).normalize();
 }

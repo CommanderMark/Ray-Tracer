@@ -37,6 +37,7 @@ public:
     Vector3f invert() const;
     float dotProduct(const Vector3f& b) const;
     Vector3f crossProduct(const Vector3f& b) const;
+    Vector3f vectProduct(const Vector3f& b) const;
 
     static const Vector3f zero;
     static const Vector3f one;

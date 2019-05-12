@@ -3,7 +3,7 @@
 #include "Plane.h"
 #include "../Math/Math.h"
 
-Plane::Plane(const Vector3f& p1, const Vector3f& p2, const Vector3f& p3, const Vector3f& diff, const Vector3f& spec, const Vector3f& amb) : Object(diff, spec, amb) {
+Plane::Plane(const Vector3f& p1, const Vector3f& p2, const Vector3f& p3, const Vector3f& diff, const Vector3f& spec, const Vector3f& amb, float shininessCoe) : Object(diff, spec, amb, shininessCoe) {
     Vector3f edge1 = p2.subtract(p1);
     Vector3f edge2 = p3.subtract(p1);
 

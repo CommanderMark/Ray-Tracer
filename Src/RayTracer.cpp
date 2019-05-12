@@ -34,7 +34,9 @@ float RayTracer::getAspectRatio() const {
     return imageWidth / (float)imageHeight;
 }
 
-Ray RayTracer::getPrimaryRay(int x, int y) const {
+const Ray RayTracer::getPrimaryRay(int x, int y) const {
+    // From: http://web.cse.ohio-state.edu/~shen.94/681/Site/Slides_files/basic_algo.pdf
+
     Vector3f location = bottomLeftOfPlane.add(cam.getRight().multiply(x).multiply(pixelWidth)).add(cam.getUp().multiply(y).multiply(pixelHeight));
 
     Vector3f pos = cam.getPosition();
@@ -61,7 +63,7 @@ void RayTracer::rayTrace(const char outputFile[]) const {
     img.save(outputFile);
 }
 
-Vector3f RayTracer::computeRay(const Ray& ray) const {
+const Vector3f RayTracer::computeRay(const Ray& ray) const {
     float closestContactSquared = INFINITY;
     Intersection closestIntersect = Intersection();
 
@@ -80,29 +82,71 @@ Vector3f RayTracer::computeRay(const Ray& ray) const {
 
     // TODO: Phong shading.
     if (closestIntersect.didHit()) {
-        // Check if the light source has line of sight towards the object.
+        Vector3f finalColor = closestIntersect.obj->getAmbientColor();
+
         // Move the contact point one unit towards the camera to avoid colliding with the initial object.
         Vector3f position = closestIntersect.contact.subtract(ray.direction);
-        Vector3f direction = lights[0]->getPosition().subtract(position).normalize();
 
-        Ray shadowRay = Ray(position, direction);
-        bool isInShadow = false;
+        // Check if any light sources have line of sight towards the object.
+        for (int i = 0; i < (int)lights.size(); i++) {
+            Vector3f direction = lights[i]->getPosition().subtract(position).normalize();
+            Ray shadowRay = Ray(position, direction);
 
-        for (int i = 0; i < (int)objects.size(); i++) {
-            Intersection intersect = objects[i]->intersects(shadowRay);
+            bool isInShadow = false;
+            for (int i = 0; i < (int)objects.size(); i++) {
+                Intersection intersect = objects[i]->intersects(shadowRay);
 
-            if (intersect.didHit()) {
-                isInShadow = true;
+                if (intersect.didHit()) {
+                    isInShadow = true;
+                    break;
+                }
+            }
+
+            if (isInShadow) {
+                continue;
+            }
+
+            finalColor = finalColor.add(getPhongShading(ray, shadowRay, lights[i], closestIntersect));
+            
+            if (finalColor.x >= 1.0f && finalColor.y >= 1.0f && finalColor.z >= 1.0f) {
                 break;
             }
         }
+        
+        if (finalColor.x >= 1.0f) { finalColor.x = 1.0f; }
+        if (finalColor.y >= 1.0f) { finalColor.y = 1.0f; }
+        if (finalColor.z >= 1.0f) { finalColor.z = 1.0f; }
 
-        if (isInShadow) {
-            return Vector3f::zero;
-        }
-
-        return closestIntersect.obj->getDiffuseColor();
+        return finalColor;
     }
 
     return backgroundColor;
+}
+
+const Vector3f RayTracer::getPhongShading(const Ray& primaryRay, const Ray& shadowRay, const Light* light, const Intersection& intersect) const {
+    // Diffuse.
+    float phongDiff = shadowRay.direction.dotProduct(intersect.normal);
+    Vector3f diffuse = Vector3f::zero;
+
+    if (phongDiff > 0.0f) {
+        diffuse = intersect.obj->getDiffuseColor().multiply(phongDiff).vectProduct(light->getDiffuseColor());
+    } else {
+        phongDiff = 0.0f;
+    }
+
+    // Specular.
+    Vector3f rayToViewer = primaryRay.direction.invert();
+    Vector3f reflectOverNormal = shadowRay.direction.reflect(intersect.normal).invert();
+
+    float phongSpec = rayToViewer.dotProduct(reflectOverNormal);
+    phongSpec = std::pow(phongSpec, intersect.obj->getShineCoefficient());
+    Vector3f specular = Vector3f::zero;
+
+    if (phongSpec > 0.0f) {
+        specular = intersect.obj->getSpecularColor().multiply(phongSpec).vectProduct(light->getSpecularColor());
+    } else {
+        phongSpec = 0.0f;
+    }
+
+    return diffuse.add(specular);
 }

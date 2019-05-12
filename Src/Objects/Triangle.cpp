@@ -3,8 +3,8 @@
 #include "Triangle.h"
 #include "../Math/Math.h"
 
-Triangle::Triangle(const Vector3f& p1, const Vector3f& p2, const Vector3f& p3, const Vector3f& diff, const Vector3f& spec, const Vector3f& amb)
-: Object(diff, spec, amb), p1(p1), p2(p2), p3(p3) {
+Triangle::Triangle(const Vector3f& p1, const Vector3f& p2, const Vector3f& p3, const Vector3f& diff, const Vector3f& spec, const Vector3f& amb, float shininessCoe)
+: Object(diff, spec, amb, shininessCoe), p1(p1), p2(p2), p3(p3) {
     Vector3f edge1 = p2.subtract(p1);
     Vector3f edge2 = p3.subtract(p1);
 

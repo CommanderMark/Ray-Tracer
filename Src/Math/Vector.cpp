@@ -82,3 +82,7 @@ float Vector3f::dotProduct(const Vector3f& b) const {
 Vector3f Vector3f::crossProduct(const Vector3f& b) const {
     return Vector3f(y*b.z-z*b.y,z*b.x-x*b.z,x*b.y-y*b.x);
 }
+
+Vector3f Vector3f::vectProduct(const Vector3f& b) const {
+    return Vector3f(x * b.x, y * b.y, z * b.z);
+}

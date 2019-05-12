@@ -6,6 +6,7 @@
 #include "Math/Vector.h"
 #include "Objects/Ray.h"
 #include "Objects/Camera.h"
+#include "Objects/Intersection.h"
 
 class Object;
 class Light;
@@ -23,8 +24,9 @@ private:
     Vector3f centerOfPlane;
     Vector3f bottomLeftOfPlane;
 
-    Ray getPrimaryRay(int x, int y) const;
-    Vector3f computeRay(const Ray& ray) const;
+    const Ray getPrimaryRay(int x, int y) const;
+    const Vector3f computeRay(const Ray& ray) const;
+    const Vector3f getPhongShading(const Ray& primaryRay, const Ray& shadowRay, const Light* light, const Intersection& intersect) const;
 
 public:
     Vector3f backgroundColor;

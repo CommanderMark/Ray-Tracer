@@ -12,7 +12,7 @@ private:
     Vector3f normal;
 
 public:
-    Triangle(const Vector3f& p1, const Vector3f& p2, const Vector3f& p3, const Vector3f& diff, const Vector3f& spec = Vector3f::zero, const Vector3f& amb = Vector3f::zero);
+    Triangle(const Vector3f& p1, const Vector3f& p2, const Vector3f& p3, const Vector3f& diff, const Vector3f& spec, const Vector3f& amb, float shininessCoe);
     Intersection intersects(const Ray& ray) override;
 };
 
