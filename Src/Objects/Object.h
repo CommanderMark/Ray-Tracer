@@ -21,7 +21,7 @@ public:
     const Vector3f getAmbientColor() const;
     float getShineCoefficient() const;
 
-    virtual Intersection intersects(const Ray& ray)=0;
+    virtual Intersection intersects(const Ray& ray) const=0;
 };
 
 #endif // OBJECT_H_INCLUDED

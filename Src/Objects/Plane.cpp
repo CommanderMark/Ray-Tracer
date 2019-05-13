@@ -11,7 +11,7 @@ Plane::Plane(const Vector3f& p1, const Vector3f& p2, const Vector3f& p3, const V
     center = p1;
 }
 
-Intersection Plane::intersects(const Ray& ray) {
+Intersection Plane::intersects(const Ray& ray) const {
     float denom = normal.dotProduct(ray.direction);
 
     if (std::fabs(denom) > Math::MARGIN_ERROR) {

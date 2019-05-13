@@ -6,7 +6,7 @@
 Sphere::Sphere(const Vector3f& center, float radius, const Vector3f& diff, const Vector3f& spec, const Vector3f& amb, float shininessCoe)
 : Object(diff, spec, amb, shininessCoe), center(center), radius(radius) { }
 
-Intersection Sphere::intersects(const Ray& ray) {
+Intersection Sphere::intersects(const Ray& ray) const {
     float radiusSquared = radius * radius;
 
     // Vector from ray origin to the center of the sphere.

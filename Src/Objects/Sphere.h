@@ -11,7 +11,7 @@ private:
 public:
     Sphere(const Vector3f& center, float radius, const Vector3f& diff, const Vector3f& spec, const Vector3f& amb, float shininessCoe);
 
-    Intersection intersects(const Ray& ray) override;
+    Intersection intersects(const Ray& ray) const override;
     const Vector3f getNormal(const Vector3f& point) const;
 };
 

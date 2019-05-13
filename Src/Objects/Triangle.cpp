@@ -11,7 +11,7 @@ Triangle::Triangle(const Vector3f& p1, const Vector3f& p2, const Vector3f& p3, c
     normal = edge1.crossProduct(edge2).normalize();
 }
 
-Intersection Triangle::intersects(const Ray& ray) {
+Intersection Triangle::intersects(const Ray& ray) const {
     // Möller–Trumbore intersection algorithm.
 
     Vector3f edge1 = p2.subtract(p1);
