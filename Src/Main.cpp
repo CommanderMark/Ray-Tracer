@@ -5,7 +5,7 @@
 #include "Objects/Light.h"
 
 int main(int argc, char** argv) {
-    Vector3f camPos = Vector3f(0, 10, 30);
+    Vector3f camPos = Vector3f(0, 0, 50);
 
     // Point to the origin.
     Vector3f lookAt = Vector3f(0, 0, 0);
@@ -23,21 +23,21 @@ int main(int argc, char** argv) {
     RayTracer rt = RayTracer(cam, imageWidth, imageHeight, imageWidth, imageHeight);
 
     rt.backgroundColor = Vector3f(0.2f, 0.2f, 0.2f);
-    rt.lights.push_back(new Light(Vector3f(10, 50, 25), Vector3f::one, Vector3f::zero));
+    rt.lights.push_back(new Light(Vector3f(10, 50, 45), Vector3f::one, Vector3f::zero));
     
-    rt.objects.push_back(new Sphere(Vector3f(0, 15, 0), 15,
+    rt.objects.push_back(new Sphere(Vector3f(0, 25, 20), 10,
                                     Vector3f(1.0f, 0, 0),
                                     Vector3f::zero,
                                     Vector3f::zero,
                                     1.0f));
 
-//    rt.objects.push_back(new Triangle(Vector3f(30, 0, 0),
-//                                   Vector3f(20, 0, 0),
-//                                   Vector3f(50, 40, -20),
-//                                   Vector3f(0, 1.0f, 0.04f),
-//                                   Vector3f(0.2f, 0.5f, 0.5f),
-//                                   Vector3f(0.1f, 0.5f, 0.5f),
-//                                   1.0f));
+    rt.objects.push_back(new Triangle(Vector3f(0, 10, 0),
+                                   Vector3f(50, 10, 10),
+                                   Vector3f(50, 60, 10),
+                                   Vector3f(0, 1.0f, 0.04f),
+                                   Vector3f(0.2f, 0.5f, 0.5f),
+                                   Vector3f(0.1f, 0.5f, 0.5f),
+                                   1.0f));
     rt.objects.push_back(new Plane(Vector3f(10, 0, 0), Vector3f(-10, 0, 0), Vector3f(0, -10, 20), Vector3f::one, Vector3f::one, Vector3f(0.2, 0.2, 0.2), 1.0f));
 
     rt.rayTrace("output.bmp");
