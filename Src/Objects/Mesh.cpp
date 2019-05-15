@@ -12,17 +12,17 @@ std::vector<Mesh*> Mesh::loadOBJ(const char* path, const Vector3f& pos, const fl
     std::vector<Mesh*> retVal;
 
     // Initialize Loader
-	objl::Loader Loader;
-	bool loaded = Loader.LoadFile(path);
+    objl::Loader Loader;
+    bool loaded = Loader.LoadFile(path);
 
-	if (loaded) {
-		for (int i = 0; i < (int)Loader.LoadedMeshes.size(); i++) {
-			objl::Mesh currMesh = Loader.LoadedMeshes[i];
+    if (loaded) {
+        for (int i = 0; i < (int)Loader.LoadedMeshes.size(); i++) {
+            objl::Mesh currMesh = Loader.LoadedMeshes[i];
             retVal.push_back(new Mesh(spec, diff, amb, shininessCoe));
 
-			for (int j = 0; j < (int)currMesh.Vertices.size(); j++) {
+            for (int j = 0; j < (int)currMesh.Vertices.size(); j++) {
                 retVal[i]->vertices.push_back(Vector3f(currMesh.Vertices[j].Position.X, currMesh.Vertices[j].Position.Y, currMesh.Vertices[j].Position.Z));
-			}
+            }
 
             for (int j = 0; j < (int)currMesh.Indices.size(); j += 3) {
                 Vector3f p1 = retVal[i]->vertices[currMesh.Indices[j]].multiply(scaleFactor).add(pos);
@@ -32,9 +32,9 @@ std::vector<Mesh*> Mesh::loadOBJ(const char* path, const Vector3f& pos, const fl
                 retVal[i]->triangles.push_back(new Triangle(p1, p2, p3, diff, spec, amb, shininessCoe));
             }
         }
-	} else {
+    } else {
         std::cerr << "Failed to Load File. May have failed to find it or it was not an .obj file.\n";
-	}
+    }
 
     return retVal;
 }
