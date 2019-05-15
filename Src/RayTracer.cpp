@@ -80,7 +80,6 @@ const Vector3f RayTracer::computeRay(const Ray& ray) const {
         }
     }
 
-    // TODO: Phong shading.
     if (closestIntersect.didHit()) {
         Vector3f finalColor = closestIntersect.obj->getAmbientColor();
 
@@ -116,6 +115,10 @@ const Vector3f RayTracer::computeRay(const Ray& ray) const {
         if (finalColor.x >= 1.0f) { finalColor.x = 1.0f; }
         if (finalColor.y >= 1.0f) { finalColor.y = 1.0f; }
         if (finalColor.z >= 1.0f) { finalColor.z = 1.0f; }
+        
+        if (finalColor.x < 0.0f) { finalColor.x = 0.0f; }
+        if (finalColor.y < 0.0f) { finalColor.y = 0.0f; }
+        if (finalColor.z < 0.0f) { finalColor.z = 0.0f; }
 
         return finalColor;
     }
@@ -136,7 +139,7 @@ const Vector3f RayTracer::getPhongShading(const Ray& primaryRay, const Ray& shad
 
     // Specular.
     Vector3f rayToViewer = primaryRay.direction.invert();
-    Vector3f reflectOverNormal = shadowRay.direction.reflect(intersect.normal).invert();
+    Vector3f reflectOverNormal = shadowRay.direction.reflect(intersect.normal);
 
     float phongSpec = rayToViewer.dotProduct(reflectOverNormal);
     phongSpec = std::pow(phongSpec, intersect.obj->getShineCoefficient());
