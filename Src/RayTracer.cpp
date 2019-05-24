@@ -106,16 +106,16 @@ const Vector3f RayTracer::computeRay(const Ray& ray) const {
             }
 
             finalColor = finalColor.add(getPhongShading(ray, shadowRay, lights[i], closestIntersect));
-            
+
             if (finalColor.x >= 1.0f && finalColor.y >= 1.0f && finalColor.z >= 1.0f) {
                 break;
             }
         }
-        
-        if (finalColor.x >= 1.0f) { finalColor.x = 1.0f; }
-        if (finalColor.y >= 1.0f) { finalColor.y = 1.0f; }
-        if (finalColor.z >= 1.0f) { finalColor.z = 1.0f; }
-        
+
+        if (finalColor.x > 1.0f) { finalColor.x = 1.0f; }
+        if (finalColor.y > 1.0f) { finalColor.y = 1.0f; }
+        if (finalColor.z > 1.0f) { finalColor.z = 1.0f; }
+
         if (finalColor.x < 0.0f) { finalColor.x = 0.0f; }
         if (finalColor.y < 0.0f) { finalColor.y = 0.0f; }
         if (finalColor.z < 0.0f) { finalColor.z = 0.0f; }
@@ -133,8 +133,6 @@ const Vector3f RayTracer::getPhongShading(const Ray& primaryRay, const Ray& shad
 
     if (phongDiff > 0.0f) {
         diffuse = intersect.obj->getDiffuseColor().multiply(phongDiff).vectProduct(light->getDiffuseColor());
-    } else {
-        phongDiff = 0.0f;
     }
 
     // Specular.
@@ -147,8 +145,6 @@ const Vector3f RayTracer::getPhongShading(const Ray& primaryRay, const Ray& shad
 
     if (phongSpec > 0.0f) {
         specular = intersect.obj->getSpecularColor().multiply(phongSpec).vectProduct(light->getSpecularColor());
-    } else {
-        phongSpec = 0.0f;
     }
 
     return diffuse.add(specular);
