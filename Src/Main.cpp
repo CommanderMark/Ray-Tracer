@@ -28,11 +28,11 @@ int main(int argc, char** argv) {
 //    rt.lights.push_back(new Light(Vector3f(-30, 55, 25), Vector3f(0, 1.0, 0), Vector3f::one));
 //    rt.lights.push_back(new Light(Vector3f(-30, 55, 40), Vector3f(0, 0, 1.0), Vector3f::one));
 
-//    rt.objects.push_back(new Sphere(Vector3f(0, 25, 20), 10,
-//                                    Vector3f(1.0f, 0, 0),
-//                                    Vector3f::one,
-//                                    Vector3f::zero,
-//                                    20.0f));
+    rt.objects.push_back(new Sphere(Vector3f(0, 25, 20), 10,
+                                    Vector3f(1.0f, 0, 0),
+                                    Vector3f::one,
+                                    Vector3f::zero,
+                                    20.0f));
 
 //    rt.objects.push_back(new Triangle(Vector3f(0, 10, 0),
 //                                   Vector3f(50, 10, 10),
@@ -43,10 +43,10 @@ int main(int argc, char** argv) {
 //                                   1.0f));
     rt.objects.push_back(new Plane(Vector3f(10, 0, 0), Vector3f(-10, 0, 0), Vector3f(0, -10, 20), Vector3f::one, Vector3f::one, Vector3f(0.2, 0.2, 0.2), 1.0f));
 
-    std::vector<Mesh*> model = Mesh::loadOBJ("box_stack.obj", Vector3f::zero, 20.0f, Vector3f(1.0f, 0, 0), Vector3f::one, Vector3f::zero, 5.0f);
-   for (int i = 0; i < (int)model.size(); i++) {
-       rt.objects.push_back(model[i]);
-   }
+//    std::vector<Mesh*> model = Mesh::loadOBJ("box_stack.obj", Vector3f::zero, 20.0f, Vector3f(1.0f, 0, 0), Vector3f::one, Vector3f::zero, 5.0f);
+//   for (int i = 0; i < (int)model.size(); i++) {
+//       rt.objects.push_back(model[i]);
+//   }
 
     rt.rayTrace("output.bmp");
 }
