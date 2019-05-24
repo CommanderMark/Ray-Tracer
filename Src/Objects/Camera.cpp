@@ -8,7 +8,7 @@ Camera::Camera(const Vector3f& pos, const Vector3f& lookAt, const Vector3f& view
     // Direction from camera to lookAt.
     forward = position.subtract(lookAt).normalize();
 
-    // Based on whatever we defined the "up" as, is should be on the pixel plane.
+    // Based on whatever we defined the "up" as, it should be on the pixel plane.
     // Perform cross product with viewup and forward to get right.
     right = forward.crossProduct(viewUp).normalize();
 
