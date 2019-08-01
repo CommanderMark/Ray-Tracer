@@ -6,7 +6,7 @@
 #include "../Math/Vector.h"
 #include "../Utils/OBJ_Loader.h"
 
-Mesh::Mesh(const std::vector<Vector3f> vertices, const std::vector<int> indices, const Vector3f& pos, const float scaleFactor, const Vector3f& diff, const Vector3f& spec, const Vector3f& amb, float shininessCoe) : Object(diff, spec, amb, shininessCoe), vertices(vertices) {
+Mesh::Mesh(const std::vector<Vector3f> vertices, const std::vector<int>& indices, const Vector3f& pos, const float scaleFactor, const Vector3f& diff, const Vector3f& spec, const Vector3f& amb, float shininessCoe) : Object(diff, spec, amb, shininessCoe), vertices(vertices) {
     for (int i = 0; i < (int)indices.size(); i += 3) {
         Vector3f p1 = vertices[indices[i]].multiply(scaleFactor).add(pos);
         Vector3f p2 = vertices[indices[i + 1]].multiply(scaleFactor).add(pos);
