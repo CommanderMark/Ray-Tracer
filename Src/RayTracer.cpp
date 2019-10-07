@@ -140,10 +140,10 @@ const Vector3f RayTracer::getPhongShading(const Ray& primaryRay, const Ray& shad
     Vector3f reflectOverNormal = shadowRay.direction.reflect(intersect.normal);
 
     float phongSpec = rayToViewer.dotProduct(reflectOverNormal);
-    phongSpec = std::pow(phongSpec, intersect.obj->getShineCoefficient());
     Vector3f specular = Vector3f::zero;
 
     if (phongSpec > 0.0f) {
+        phongSpec = std::pow(phongSpec, intersect.obj->getShineCoefficient());
         specular = intersect.obj->getSpecularColor().multiply(phongSpec).vectProduct(light->getSpecularColor());
     }
 
