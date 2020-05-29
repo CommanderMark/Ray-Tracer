@@ -4,9 +4,9 @@
 #include <vector>
 
 #include "Math/Vector.h"
-#include "Objects/Ray.h"
-#include "Objects/Camera.h"
-#include "Objects/Intersection.h"
+#include "RT/Ray.h"
+#include "RT/Camera.h"
+#include "RT/Intersection.h"
 
 class Object;
 class Light;
@@ -31,8 +31,8 @@ private:
 public:
     Vector3f backgroundColor;
 
-    std::vector<Object*> objects;
-    std::vector<Light*> lights;
+    std::vector<const Object*> objects;
+    std::vector<const Light*> lights;
 
     RayTracer(const Camera& camera, int imageWidth, int imageHeight, int planeWidth, int planeHeight);
     ~RayTracer();

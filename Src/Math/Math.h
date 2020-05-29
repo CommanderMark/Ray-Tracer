@@ -2,7 +2,7 @@
 #define MATH_H_INCLUDED
 
 #include "Vector.h"
-#include "../Objects/Ray.h"
+#include "../RT/Ray.h"
 
 class Math {
 public:

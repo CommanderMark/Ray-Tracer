@@ -98,8 +98,9 @@
 			children = (
 				197D3E59228521EB0056FA6F /* Main.cpp */,
 				197DD0A0228504AF004DACDE /* CImg.h */,
-				197DD0B1228504AF004DACDE /* RayTracer.h */,
 				197DD09F228504AF004DACDE /* RayTracer.cpp */,
+				197DD0B1228504AF004DACDE /* RayTracer.h */,
+				199ED383248179C300924CDD /* RT */,
 				197DD0A1228504AF004DACDE /* Objects */,
 				197DD0AA228504AF004DACDE /* Math */,
 				19B330A0228A3D5F00260A7E /* Utils */,
@@ -111,24 +112,16 @@
 		197DD0A1228504AF004DACDE /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				190AF13122855BB6008DEC98 /* Camera.h */,
-				190AF13222855BB6008DEC98 /* Camera.cpp */,
-				1940360422877E4C00A8604B /* Light.h */,
-				1940360322877E4C00A8604B /* Light.cpp */,
-				197DD0A7228504AF004DACDE /* Ray.h */,
-				197DD0A6228504AF004DACDE /* Ray.cpp */,
-				197DD0A3228504AF004DACDE /* Intersection.h */,
-				197DD0A2228504AF004DACDE /* Intersection.cpp */,
-				197DD0A8228504AF004DACDE /* Object.h */,
 				197DD0A5228504AF004DACDE /* Object.cpp */,
-				197DD0A4228504AF004DACDE /* Sphere.h */,
+				197DD0A8228504AF004DACDE /* Object.h */,
 				197DD0A9228504AF004DACDE /* Sphere.cpp */,
-				190AF135228563FB008DEC98 /* Triangle.h */,
+				197DD0A4228504AF004DACDE /* Sphere.h */,
 				190AF134228563FB008DEC98 /* Triangle.cpp */,
-				1956B78322867A0C00707BCF /* Plane.h */,
+				190AF135228563FB008DEC98 /* Triangle.h */,
 				1956B78422867A0C00707BCF /* Plane.cpp */,
-				19B330A3228A3EC800260A7E /* Mesh.h */,
+				1956B78322867A0C00707BCF /* Plane.h */,
 				19B330A2228A3EC800260A7E /* Mesh.cpp */,
+				19B330A3228A3EC800260A7E /* Mesh.h */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -142,6 +135,21 @@
 				197DD0AD228504AF004DACDE /* Vector.cpp */,
 			);
 			path = Math;
+			sourceTree = "<group>";
+		};
+		199ED383248179C300924CDD /* RT */ = {
+			isa = PBXGroup;
+			children = (
+				190AF13222855BB6008DEC98 /* Camera.cpp */,
+				190AF13122855BB6008DEC98 /* Camera.h */,
+				1940360322877E4C00A8604B /* Light.cpp */,
+				1940360422877E4C00A8604B /* Light.h */,
+				197DD0A6228504AF004DACDE /* Ray.cpp */,
+				197DD0A7228504AF004DACDE /* Ray.h */,
+				197DD0A2228504AF004DACDE /* Intersection.cpp */,
+				197DD0A3228504AF004DACDE /* Intersection.h */,
+			);
+			path = RT;
 			sourceTree = "<group>";
 		};
 		19A9E9EA22851E4D0012E101 /* Frameworks */ = {

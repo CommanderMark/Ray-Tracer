@@ -43,7 +43,7 @@ Intersection Triangle::intersects(const Ray& ray) const {
         Vector3f contact = ray.origin.add(ray.direction.multiply(t));
         return Intersection(this, contact, normal);
     } else {
-        // Only line interesection.
+        // Only line intersection.
         return Intersection();
     }
 }

@@ -1,10 +1,10 @@
 #include <cmath>
 
 #include "RayTracer.h"
-#include "Objects/Intersection.h"
-#include "Objects/Object.h"
-#include "Objects/Light.h"
 #include "CImg.h"
+#include "RT/Intersection.h"
+#include "RT/Light.h"
+#include "Objects/Object.h"
 
 #include <iostream>
 

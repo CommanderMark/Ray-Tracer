@@ -15,7 +15,7 @@ private:
 
 public:
     const Vector3f getPosition() const;
-    float getFOV();
+    float getFOV() const;
 
     const Vector3f getForward() const;
     const Vector3f getUp() const;

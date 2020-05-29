@@ -19,7 +19,7 @@ const Vector3f Camera::getPosition() const {
     return position;
 }
 
-float Camera::getFOV() {
+float Camera::getFOV() const {
     return fov;
 }
 

@@ -1,9 +1,9 @@
 #include "RayTracer.h"
+#include "RT/Light.h"
 #include "Objects/Sphere.h"
 #include "Objects/Triangle.h"
 #include "Objects/Plane.h"
 #include "Objects/Mesh.h"
-#include "Objects/Light.h"
 
 int main(int argc, char** argv) {
     Vector3f camPos = Vector3f(0, 70, 250);

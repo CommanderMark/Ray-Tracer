@@ -2,8 +2,8 @@
 #define OBJECT_H_INCLUDED
 
 #include "../Math/Vector.h"
-#include "Ray.h"
-#include "Intersection.h"
+#include "../RT/Ray.h"
+#include "../RT/Intersection.h"
 
 class Object {
 private:
